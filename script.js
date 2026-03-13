@@ -84,12 +84,14 @@ function createProductCard(product) {
 }
 
 function renderProducts() {
-    const container = document.getElementById('products-container');
-    if (container) {
-        container.innerHTML = products.map(product => createProductCard(product)).join('');
-        totalProducts = products.length;
-        updateCarouselButtons();
-    }
+    ['products-container', 'products-container-2'].forEach(id => {
+        const container = document.getElementById(id);
+        if (container) {
+            container.innerHTML = products.map(product => createProductCard(product)).join('');
+        }
+    });
+    totalProducts = products.length;
+    updateCarouselButtons();
 }
 
 let currentPosition = 0;
