@@ -1,0 +1,51 @@
+.swiper-lancamentos .swiper-button-prev,
+.swiper-lancamentos .swiper-button-next {
+  --swiper-navigation-size: 0px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: white;
+  border: 1px solid #2563eb;
+  box-shadow: 0px 3px 4px 0px rgba(0,0,0,0.25);
+  margin-top: 0;
+  position: absolute;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 0
+  box-sizing: border-box;
+}
+
+.swiper-lancamentos .swiper-button-prev::after,
+.swiper-lancamentos .swiper-button-next::after {
+  display: none;
+}
+
+.swiper-lancamentos .swiper-button-prev { left: 0; }
+.swiper-lancamentos .swiper-button-next { right: 0; }
+
+.swiper-lancamentos .swiper-button-disabled { opacity: 1; }
+
+.swiper-lancamentos .swiper {
+  overflow: visible;
+}
+
+.swiper-lancamentos .swiper {
+  overflow: hidden;
+  padding-bottom: 32px;
+}
+
+.swiper-lancamentos .swiper-pagination {
+  bottom: 0;
+}
+
+.swiper-lancamentos .swiper-pagination-bullet {
+  background: #71717a; /* zinc-500 */
+  opacity: 1;
+}
+
+.swiper-lancamentos .swiper-pagination-bullet-active {
+  background: #27272a; /* zinc-800 */
+}
