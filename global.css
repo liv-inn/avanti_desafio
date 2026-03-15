@@ -1,27 +1,35 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,wght@0,200..1000;1,200..1000&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
 
-body {
-  font-family: 'Nunito Sans', sans-serif;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
+body {
+  font-family: 'Nunito Sans', sans-serif;
+
+  
+}
+
+*/swiper*/
 .swiper-lancamentos .swiper-button-prev,
 .swiper-lancamentos .swiper-button-next {
   --swiper-navigation-size: 0px;
+  position: absolute;
+  top: 40%;
   width: 30px;
   height: 30px;
   border-radius: 50%;
   background: white;
   border: 1px solid #2563eb;
   box-shadow: 0px 3px 4px 0px rgba(0,0,0,0.25);
-  margin-top: 0;
-  position: absolute;
-  cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 0;
-  padding: 0
-  box-sizing: border-box;
+  padding: 0;
+  cursor: pointer;
+  z-index: 10;
 }
 
 .swiper-lancamentos .swiper-button-prev::after,
@@ -39,7 +47,7 @@ body {
 }
 
 .swiper-lancamentos .swiper {
-    overflow: hidden;
+  overflow: hidden;
   padding-bottom: 32px;
 }
 
@@ -54,4 +62,24 @@ body {
 
 .swiper-lancamentos .swiper-pagination-bullet-active {
   background: #27272a; /* zinc-800 */
+}
+
+/*scrollbar*/
+::-webkit-scrollbar {
+    width: 6px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f4f4f5;
+    border-radius: 8px;
+    margin: 4px 0;
+    box-shadow: inset 0 0 4px #e4e4e7;
+}
+
+::-webkit-scrollbar-thumb {
+background-color: #CECECE;    border-radius: 8px;
+    border: 2 solid #f4f4f5;
+    min-height: 24px;
+    transition: background 0.3s;
 }

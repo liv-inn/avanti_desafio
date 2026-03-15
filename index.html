@@ -67,7 +67,7 @@
 
             <form
               role="search"
-              class="flex-1 mx-6 h-10 flex items-center rounded-[10px] outline outline-1 outline-offset-[-0.50px] outline-neutral-200 px-3 gap-2"
+              class="flex-1 max-w-[594px] mx-6 h-10 flex items-center rounded-[10px] outline outline-1 outline-offset-[-0.50px] outline-neutral-200 px-3 gap-2"
             >
               <label for="search-input" class="sr-only">Buscar produtos</label>
               <input
@@ -121,75 +121,44 @@
           </div>
         </div>
 
-        <nav aria-label="Categorias" class="w-full">
+        <nav aria-label="Categorias" class="w-full relative mb-4">
           <div class="w-full max-w-[1259px] mx-auto">
-            <ul class="flex flex-wrap items-center gap-11 py-2">
+            <ul id="nav-list" class="flex flex-wrap items-center gap-11 py-2">
               <li class="flex items-center gap-2">
                 <img
                   src="assets/imgs/icons/icon-menu.svg"
+                  id="menu-icon"
                   alt=""
                   aria-hidden="true"
                 />
-                <a
-                  href="/categorias"
-                  class="text-black text-sm font-bold leading-5"
-                  >Todas as Categorias</a
+                <button
+                  id="categorias-btn"
+                  aria-expanded="false"
+                  aria-controls="dropdown-categorias"
+                  class="text-sm font-bold leading-5 cursor-pointer"
                 >
-              </li>
-              <li>
-                <a
-                  href="/departamento"
-                  class="text-black text-sm font-normal leading-5"
-                  >Departamento</a
-                >
-              </li>
-              <li>
-                <a
-                  href="/departamento"
-                  class="text-black text-sm font-normal leading-5"
-                  >Departamento</a
-                >
-              </li>
-              <li>
-                <a
-                  href="/departamento"
-                  class="text-black text-sm font-normal leading-5"
-                  >Departamento</a
-                >
-              </li>
-              <li>
-                <a
-                  href="/departamento"
-                  class="text-black text-sm font-normal leading-5"
-                  >Departamento</a
-                >
-              </li>
-              <li>
-                <a
-                  href="/departamento"
-                  class="text-black text-sm font-normal leading-5"
-                  >Departamento</a
-                >
-              </li>
-              <li>
-                <a
-                  href="/departamento"
-                  class="text-black text-sm font-normal leading-5"
-                  >Departamento</a
-                >
-              </li>
-              <li>
-                <a
-                  href="/departamento"
-                  class="text-black text-sm font-normal leading-5"
-                  >Departamento</a
-                >
+                  Todas as Categorias
+                </button>
               </li>
             </ul>
+          </div>
+          <div
+            id="dropdown-categorias"
+            class="hidden absolute left-1/2 -translate-x-1/2 top-full w-full max-w-[1259px] bg-white shadow-[0px_4px_8px_-1px_rgba(0,0,0,0.10)] border z-50"
+          >
+            <div class="flex h-80"></div>
+          </div>
+
+          <div
+            id="dropdown-departamento"
+            class="hidden absolute left-1/2 -translate-x-1/2 top-full w-full max-w-[1259px] bg-white shadow-[0px_4px_8px_-1px_rgba(0,0,0,0.10)] border z-50"
+          >
+            <div class="flex h-80"></div>
           </div>
         </nav>
       </header>
 
+      <!--banner 1-->
       <section
         aria-label="Super Sale"
         class="w-full h-[510px] bg-gray-200 flex flex-col md:flex-row items-center justify-center"
@@ -225,6 +194,7 @@
         </div>
       </section>
 
+      <!---produto 1-->
       <section
         aria-label="Lançamentos"
         class="w-full max-w-[1259px] mx-auto mt-[103px]"
@@ -238,12 +208,20 @@
           >
         </div>
         <div class="swiper-lancamentos relative px-4">
-          <div class="swiper-button-prev">
-            <img src="assets/imgs/icons/left-arrow.svg" alt="Voltar" />
-          </div>
-          <div class="swiper-button-next">
-            <img src="assets/imgs/icons/right-arrow.svg" alt="Avançar" />
-          </div>
+          <button class="swiper-button-prev bg-white w-10 rounded-full h-10 border border-blue-600">
+            <img
+              src="assets/imgs/icons/left-arrow.svg"
+              alt="Voltar"
+              class="w-30 h-30"
+            />
+          </button>
+          <button class="swiper-button-next bg-white w-10 rounded-full h-10 border border-blue-600">
+            <img
+              src="assets/imgs/icons/right-arrow.svg"
+              alt="Avançar"
+              class="w-30 h-30"
+            />
+          </button>
           <div class="swiper">
             <ul class="swiper-wrapper product-list"></ul>
             <div class="swiper-pagination"></div>
@@ -251,48 +229,15 @@
         </div>
       </section>
 
+      <!---sessao1-->
       <section
         aria-label="Destaque de produto 1"
         class="w-full max-w-[1259px] mx-auto mt-9"
       >
-        <div class="flex items-center gap-10">
-          <div
-            class="relative w-[652px] flex-shrink-0 bg-stone-300 flex items-center justify-center min-h-[747px]"
-          >
-            <img
-              class="w-[523.38px] rotate-[-7.54deg]"
-              src="assets/imgs/Free_Mug_Mockup_2.png"
-              alt="Produto em destaque"
-            />
-          </div>
-          <div class="flex flex-col gap-5">
-            <h2
-              class="text-black text-3xl font-bold uppercase leading-10 tracking-wide"
-            >
-              Lorem Ipsum
-            </h2>
-            <p class="text-black text-lg font-normal leading-6 tracking-wide">
-              Duis consectetur metus nec lacus auctor dignissim. Mauris vitae
-              finibus dui. Mauris laoreet lacus ut eleifend viverra. Cras
-              efficitur volutpat dui, in lobortis metus lacinia sit amet. Sed
-              lacinia pharetra magna, vel pulvinar ligula hendrerit a. Maecenas
-              fringilla porttitor tortor eget lacinia. Donec sollicitudin
-              euismod orci, auctor fringilla magna consequat interdum. Fusce
-              sagittis elit a libero commodo egestas efficitur id augue.
-            </p>
-            <p class="text-black text-lg font-normal leading-6 tracking-wide">
-              Duis consectetur metus nec lacus auctor dignissim. Mauris vitae
-              finibus dui. Mauris laoreet lacus ut eleifend viverra. Cras
-              efficitur volutpat dui, in lobortis metus lacinia sit amet. Sed
-              lacinia pharetra magna, vel pulvinar ligula hendrerit a. Maecenas
-              fringilla porttitor tortor eget lacinia. Donec sollicitudin
-              euismod orci, auctor fringilla magna consequat interdum. Fusce
-              sagittis elit a libero commodo egestas efficitur id augue.
-            </p>
-          </div>
-        </div>
+        <div id="destaque-1"></div>
       </section>
 
+      <!--diferenciais-->
       <section
         aria-label="Diferenciais"
         class="w-full bg-neutral-200 mt-[140px] py-16"
@@ -372,48 +317,16 @@
         </div>
       </section>
 
+      <!---sessao2--->
+
       <section
         aria-label="Destaque de produto 2"
         class="w-full max-w-[1259px] mx-auto mt-12"
       >
-        <div class="flex items-center gap-10">
-          <div
-            class="relative w-[652px] flex-shrink-0 bg-stone-300 flex items-center justify-center min-h-[747px]"
-          >
-            <img
-              class="w-[523.38px] rotate-[-7.54deg]"
-              src="assets/imgs/Free_Mug_Mockup_2.png"
-              alt="Produto em destaque"
-            />
-          </div>
-          <div class="flex flex-col gap-5">
-            <h2
-              class="text-black text-3xl font-bold uppercase leading-10 tracking-wide"
-            >
-              Lorem Ipsum
-            </h2>
-            <p class="text-black text-lg font-normal leading-6 tracking-wide">
-              Duis consectetur metus nec lacus auctor dignissim. Mauris vitae
-              finibus dui. Mauris laoreet lacus ut eleifend viverra. Cras
-              efficitur volutpat dui, in lobortis metus lacinia sit amet. Sed
-              lacinia pharetra magna, vel pulvinar ligula hendrerit a. Maecenas
-              fringilla porttitor tortor eget lacinia. Donec sollicitudin
-              euismod orci, auctor fringilla magna consequat interdum. Fusce
-              sagittis elit a libero commodo egestas efficitur id augue.
-            </p>
-            <p class="text-black text-lg font-normal leading-6 tracking-wide">
-              Duis consectetur metus nec lacus auctor dignissim. Mauris vitae
-              finibus dui. Mauris laoreet lacus ut eleifend viverra. Cras
-              efficitur volutpat dui, in lobortis metus lacinia sit amet. Sed
-              lacinia pharetra magna, vel pulvinar ligula hendrerit a. Maecenas
-              fringilla porttitor tortor eget lacinia. Donec sollicitudin
-              euismod orci, auctor fringilla magna consequat interdum. Fusce
-              sagittis elit a libero commodo egestas efficitur id augue.
-            </p>
-          </div>
-        </div>
+        <div id="destaque-2"></div>
       </section>
 
+      <!---produto 2--->
       <section
         aria-label="Lançamentos"
         class="w-full max-w-[1259px] mx-auto mt-[103px]"
@@ -440,6 +353,7 @@
         </div>
       </section>
 
+      <!---banner 2-->
       <section
         aria-label="Chamada para contato"
         class="w-full h-[660px] relative mt-[66px]"
@@ -462,6 +376,7 @@
         </div>
       </section>
 
+      <!---newsletter--->
       <section
         aria-label="Newsletter"
         class="w-full max-w-[1259px] mx-auto mt-[71px]"
