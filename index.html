@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>AVANTI - E-commerce</title>
+
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -11,885 +12,270 @@
       href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,wght@0,200..1000;1,200..1000&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap"
       rel="stylesheet"
     />
-    <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            colors: {
-              "blue-primary": "#2563eb",
-              "blue-custom": "rgb(0,92,255)",
-            },
-            fontFamily: {
-              nunito: ["Nunito", "sans-serif"],
-              "nunito-sans": ["Nunito Sans", "sans-serif"],
-            },
-          },
-        },
-      };
-    </script>
-    <style>
-      body {
-        font-family: "Nunito", sans-serif;
-        font-weight: 400;
-        line-height: 1.5;
-      }
-
-      input[type="text"]:focus {
-        box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
-      }
-
-      .product-card {
-        flex-shrink: 0;
-        transition: all 0.3s ease;
-      }
-      .product-card:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-      }
-      .product-card img {
-        transition: transform 0.3s ease;
-      }
-      .product-card:hover img {
-        transform: scale(1.05);
-      }
-
-      .buy-button:hover {
-        transform: translateY(-1px);
-        box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
-      }
-
-      .ver-mais-link:hover {
-        color: #4b5563;
-      }
-
-      #products-container::-webkit-scrollbar {
-        display: none;
-      }
-      #products-container {
-        -ms-overflow-style: none;
-        scrollbar-width: none;
-        scroll-behavior: smooth;
-      }
-
-      .line-clamp-2 {
-        display: -webkit-box;
-        -webkit-line-clamp: 2;
-        -webkit-box-orient: vertical;
-        overflow: hidden;
-      }
-
-      img {
-        transition: opacity 0.3s ease;
-      }
-      img:not([src]) {
-        opacity: 0;
-      }
-
-      button {
-        transition: all 0.3s ease;
-      }
-    </style>
   </head>
-  <body class="bg-gray-50 font-nunito">
-    <div
-      class="bg-blue-primary text-white text-center py-2"
-      style="
-        font-family: &quot;Nunito Sans&quot;, sans-serif;
-        font-size: 14px;
-        font-weight: 700;
-      "
-    >
-      Ganhe
-      <span
-        style="background-color: #6220c1; padding: 1px 6px; border-radius: 3px"
-        >R$10,00</span
-      >
-      de desconto no seu primeiro pedido. Utilize o cupom DESCONTO10
-    </div>
-
-    <header class="bg-white shadow-sm border-b border-gray-200">
-      <div class="container mx-auto px-6 py-4">
-        <div class="flex items-center justify-between">
-          <div class="flex items-center">
-            <img src="assets/imgs/logo.svg" alt="AVANTI" class="h-8 w-auto" />
-          </div>
-
-          <div class=" flex ml-[65px] mr-[278px]">
-            <div class="relative" style="width: 594px; height: 40px">
-              <input
-                type="text"
-                placeholder="Digite aqui o que você procura"
-                class="w-full h-full px-4 pr-12 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-primary focus:border-transparent"
-              />
-              <button
-                class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-700"
-              >
-                <svg
-                  class="w-5 h-5"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-                  />
-                </svg>
-              </button>
-            </div>
-          </div>
-
-          <div class="flex items-center space-x-6">
-            <div class="flex items-center text-gray-700 text-sm">
-              <img
-                src="assets/imgs/user.svg"
-                alt="Cliente"
-                class="w-4 h-5 mr-2"
-              />
-
-              <div>
-                <div class="text-xs text-gray-500">Olá,</div>
-                <div class="font-semibold text-blue-primary">Nome cliente!</div>
-              </div>
-            </div>
-            <div class="relative">
-              <button class="text-gray-700 hover:text-gray-900">
-                <svg
-                  class="w-6 h-6"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-2.5-5M7 13l-2.5 5M17 21a2 2 0 100-4 2 2 0 000 4zm-8 0a2 2 0 100-4 2 2 0 000 4z"
-                  />
-                </svg>
-              </button>
-              <span
-                class="absolute -top-2 -right-2 bg-blue-primary text-white text-xs rounded-full w-5 h-5 flex items-center justify-center font-semibold"
-                >2</span
-              >
-            </div>
-          </div>
-        </div>
-
-        <div class="mt-4 pt-4">
-          <div class="flex items-center justify-start">
-            <div class="flex items-center space-x-3 mr-12">
-              <svg
-                class="w-5 h-5 text-black"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-              >
-                <path
-                  d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
-                />
-              </svg>
-              <span class="text-black">Todas as Categorias</span>
-            </div>
-            <nav class="flex space-x-10">
-              <a href="#" class="text-gray-600 font-medium text-sm"
-                >Departamento</a
-              >
-              <a href="#" class="text-gray-600 font-medium text-sm"
-                >Departamento</a
-              >
-              <a href="#" class="text-gray-600 font-medium text-sm"
-                >Departamento</a
-              >
-              <a href="#" class="text-gray-600 font-medium text-sm"
-                >Departamento</a
-              >
-              <a href="#" class="text-gray-600 font-medium text-sm"
-                >Departamentos</a
-              >
-              <a href="#" class="text-gray-600 font-medium text-sm"
-                >Departamento</a
-              >
-              <a href="#" class="text-gray-600 font-medium text-sm"
-                >Departamento</a
-              >
-              <a href="#" class="text-gray-600 font-medium text-sm"
-                >Departamento</a
-              >
-            </nav>
-          </div>
-        </div>
-      </div>
-    </header>
-
-    <section
-      class="bg-[#E7E7EA] h-[510px] max-md:h-auto max-md:min-h-[400px] max-md:py-8"
-    >
-      <div class="container mx-auto px-4 h-full">
-        <div
-          class="flex items-center justify-between h-full max-md:flex-col max-md:text-center max-md:h-auto max-md:py-8"
+  <body>
+    <div class="w-full min-h-[5959px] bg-white overflow-hidden">
+      <header class="w-full relative">
+        <aside
+          aria-label="Aviso promocional"
+          class="w-full h-7 bg-blue-600 overflow-hidden flex items-center justify-center"
         >
-          <div class="flex-1 flex justify-center items-center">
-            <img
-              src="assets/imgs/banner-chair.png"
-              alt="Roupas empilhadas na cadeira"
-              class="w-full object-contain max-w-[685px] h-[510px] max-lg:max-h-[400px] max-lg:h-auto max-md:max-w-[400px] max-md:max-h-[300px] max-md:mb-8 max-[480px]:max-w-[300px] max-[480px]:max-h-[250px]"
-            />
-          </div>
-          <div class="flex-1 text-center font-nunito">
-            <h1
-              class="mb-4 leading-none text-gray-800 text-[100px] max-lg:text-[80px] max-md:text-[60px] max-[480px]:text-[48px]"
-            >
-              <span class="font-bold">SUPER</span
-              ><span class="font-normal">SALE</span>
-            </h1>
-            <p
-              class="mb-6 font-bold text-blue-custom text-[25px] max-lg:text-[20px] max-md:text-[18px] max-[480px]:text-[16px]"
-              style="letter-spacing: 0.3em"
-            >
-              ITENS SELECIONADOS COM ATÉ
-            </p>
-            <p
-              class="font-bold leading-none text-blue-custom text-[60px] max-lg:text-[50px] max-md:text-[40px] max-[480px]:text-[32px]"
-            >
-              50%OFF
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="py-16 bg-white">
-      <div class="container mx-auto px-4">
-        <div class="flex items-center justify-between mb-8">
-          <h2 class="text-2xl font-bold text-gray-900">Lançamentos</h2>
-          <a
-            href="#"
-            class="ver-mais-link font-nunito-sans font-bold text-sm text-gray-500 transition-colors duration-300"
-            >Ver mais</a
+          <p
+            class="text-white text-sm font-bold font-['Nunito_Sans'] leading-5"
           >
-        </div>
-
-        <div class="relative">
-          <button
-            class="absolute left-0 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full flex items-center justify-center z-10 bg-white text-blue-600 border-2 border-blue-600 shadow-sm transition-all duration-200 hover:bg-blue-50"
-            onclick="scrollProducts('left')"
-          >
-            <svg
-              class="w-4 h-4"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2.5"
-                d="M15 19l-7-7 7-7"
-              />
-            </svg>
-          </button>
-          <button
-            class="absolute right-0 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full flex items-center justify-center z-10 bg-white text-blue-600 border-2 border-blue-600 shadow-sm transition-all duration-200 hover:bg-blue-50"
-            onclick="scrollProducts('right')"
-          >
-            <svg
-              class="w-4 h-4"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2.5"
-                d="M9 5l7 7-7 7"
-              />
-            </svg>
-          </button>
-
-          <div class="overflow-hidden">
-            <div
-              id="products-container"
-              class="flex space-x-4 transition-transform duration-300"
-            ></div>
-          </div>
-        </div>
-
-        <div class="flex justify-center mt-6 space-x-2">
-          <div class="w-2 h-2 bg-blue-600 rounded-full"></div>
-          <div class="w-2 h-2 bg-gray-300 rounded-full"></div>
-          <div class="w-2 h-2 bg-gray-300 rounded-full"></div>
-        </div>
-      </div>
-    </section>
-
-    <section class="bg-white py-16">
-      <div class="container mx-auto px-4">
-        <div
-          class="flex items-start justify-center max-w-[1177px] mx-auto gap-16 max-md:flex-col max-md:gap-8 max-md:items-center max-md:text-center"
-        >
-          <div
-            class="flex-shrink-0 w-[652px] max-lg:w-[500px] max-md:w-[400px] max-[640px]:w-[300px] bg-[#C2C2C2] flex items-center justify-center"
-          >
-            <img
-              src="assets/imgs/Free_Mug_Mockup_2.png"
-              alt="Caneca AVANTI"
-              class="w-full h-auto object-contain"
-            />
-          </div>
-          <div
-            class="flex-1 pt-2 max-md:w-full max-md:max-w-[600px] max-md:mx-auto max-[640px]:px-4"
-          >
-            <h2
-              class="font-nunito font-bold text-[30px] text-gray-800 mb-6 max-lg:text-[26px] max-md:text-[24px] max-[640px]:text-[22px]"
-            >
-              LOREM IPSUM
-            </h2>
-            <div class="space-y-4 leading-relaxed">
-              <p
-                class="font-nunito font-normal text-[18px] text-gray-500 max-lg:text-[16px] max-[640px]:text-[15px]"
-              >
-                Duis consectetur metus nec lacus auctor dignissim. Mauris vitae
-                finibus dui. Mauris laoreet lacus ut eleifend viverra. Cras
-                efficitur volutpat dui, in lobortis metus lacinia sit amet. Sed
-                lacinia pharetra magna, vel pulvinar ligula hendrerit a.
-                Maecenas fringilla porttitor tortor eget lacinia. Donec
-                sollicitudin euismod orci, auctor fringilla magna consequat
-                interdum. Fusce sagittis elit a libero commodo egestas efficitur
-                id augue.
-              </p>
-              <p
-                class="font-nunito font-normal text-[18px] text-gray-500 max-lg:text-[16px] max-[640px]:text-[15px]"
-              >
-                Duis consectetur metus nec lacus auctor dignissim. Mauris vitae
-                finibus dui. Mauris laoreet lacus ut eleifend viverra. Cras
-                efficitur volutpat dui, in lobortis metus lacinia sit amet. Sed
-                lacinia pharetra magna, vel pulvinar ligula hendrerit a.
-                Maecenas fringilla porttitor tortor eget lacinia. Donec
-                sollicitudin euismod orci, auctor fringilla magna consequat
-                interdum. Fusce sagittis elit a libero commodo egestas efficitur
-                id augue.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="py-16 bg-[#DEDEDE]">
-      <div class="container mx-auto px-4">
-        <div
-          class="flex items-center justify-center gap-16 max-w-[1177px] mx-auto max-md:flex-col max-md:gap-12 max-md:text-center"
-        >
-          <div
-            class="w-[487px] flex-shrink-0 max-lg:w-[400px] max-md:w-full max-md:max-w-[600px] max-md:mx-auto max-[640px]:max-w-full max-[640px]:px-4"
-          >
-            <h2
-              class="font-nunito font-bold text-[30px] text-[#4F4F4F] mb-8 max-lg:text-[26px] max-md:text-[24px] max-md:text-center max-[640px]:text-[22px]"
-            >
-              LOREM IPSUM
-            </h2>
-            <div class="space-y-6">
-              <div class="flex items-start space-x-4">
-                <div
-                  class="flex-shrink-0 w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center"
-                >
-                  <svg
-                    class="w-6 h-6 text-white"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
-                    />
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
-                    />
-                  </svg>
-                </div>
-                <p
-                  class="font-nunito font-normal text-[18px] text-[#4F4F4F] leading-relaxed max-lg:text-[16px] max-[640px]:text-[15px]"
-                >
-                  Aenean massa. Cum sociis natoque penatibus et magnis dis
-                  parturient montes, nascetur ridiculus mus. Donec quam felis,
-                  ultricies nec, pellentesque eu, pretium quis, sem.
-                </p>
-              </div>
-              <div class="flex items-start space-x-4">
-                <div
-                  class="flex-shrink-0 w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center"
-                >
-                  <svg
-                    class="w-6 h-6 text-white"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
-                    />
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
-                    />
-                  </svg>
-                </div>
-                <p
-                  class="font-nunito font-normal text-[18px] text-[#4F4F4F] leading-relaxed max-lg:text-[16px] max-[640px]:text-[15px]"
-                >
-                  Aenean massa. Cum sociis natoque penatibus et magnis dis
-                  parturient montes, nascetur ridiculus mus. Donec quam felis,
-                  ultricies nec, pellentesque eu, pretium quis, sem.
-                </p>
-              </div>
-              <div class="flex items-start space-x-4">
-                <div
-                  class="flex-shrink-0 w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center"
-                >
-                  <svg
-                    class="w-6 h-6 text-white"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
-                    />
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
-                    />
-                  </svg>
-                </div>
-                <p
-                  class="font-nunito font-normal text-[18px] text-[#4F4F4F] leading-relaxed max-lg:text-[16px] max-[640px]:text-[15px]"
-                >
-                  Aenean massa. Cum sociis natoque penatibus et magnis dis
-                  parturient montes, nascetur ridiculus mus. Donec quam felis,
-                  ultricies nec, pellentesque eu, pretium quis, sem.
-                </p>
-              </div>
-            </div>
-          </div>
-          <div
-            class="flex-shrink-0 w-[652px] max-lg:w-[500px] max-md:w-[400px] max-[640px]:w-[300px]"
-          >
-            <img
-              src="assets/imgs/segundo banner.png"
-              alt="Caneca AVANTI com comida"
-              class="w-full h-auto object-contain"
-            />
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="bg-white py-16">
-      <div class="container mx-auto px-4">
-        <div
-          class="flex items-start justify-center max-w-[1177px] mx-auto gap-16 max-md:flex-col max-md:gap-8 max-md:items-center max-md:text-center"
-        >
-          <div
-            class="flex-1 pt-2 max-md:w-full max-md:max-w-[600px] max-md:mx-auto max-[640px]:px-4"
-          >
-            <h2
-              class="font-nunito font-bold text-[30px] text-gray-800 mb-6 max-lg:text-[26px] max-md:text-[24px] max-[640px]:text-[22px]"
-            >
-              LOREM IPSUM
-            </h2>
-            <div class="space-y-4 leading-relaxed">
-              <p
-                class="font-nunito font-normal text-[18px] text-gray-500 max-lg:text-[16px] max-[640px]:text-[15px]"
-              >
-                Duis consectetur metus nec lacus auctor dignissim. Mauris vitae
-                finibus dui. Mauris laoreet lacus ut eleifend viverra. Cras
-                efficitur volutpat dui, in lobortis metus lacinia sit amet. Sed
-                lacinia pharetra magna, vel pulvinar ligula hendrerit a.
-                Maecenas fringilla porttitor tortor eget lacinia. Donec
-                sollicitudin euismod orci, auctor fringilla magna consequat
-                interdum. Fusce sagittis elit a libero commodo egestas efficitur
-                id augue.
-              </p>
-              <p
-                class="font-nunito font-normal text-[18px] text-gray-500 max-lg:text-[16px] max-[640px]:text-[15px]"
-              >
-                Duis consectetur metus nec lacus auctor dignissim. Mauris vitae
-                finibus dui. Mauris laoreet lacus ut eleifend viverra. Cras
-                efficitur volutpat dui, in lobortis metus lacinia sit amet. Sed
-                lacinia pharetra magna, vel pulvinar ligula hendrerit a.
-                Maecenas fringilla porttitor tortor eget lacinia. Donec
-                sollicitudin euismod orci, auctor fringilla magna consequat
-                interdum. Fusce sagittis elit a libero commodo egestas efficitur
-                id augue.
-              </p>
-            </div>
-          </div>
-          <div
-            class="flex-shrink-0 w-[652px] max-lg:w-[500px] max-md:w-[400px] max-[640px]:w-[300px] bg-[#C2C2C2] flex items-center justify-center"
-          >
-            <img
-              src="assets/imgs/Free_Mug_Mockup_2.png"
-              alt="Caneca AVANTI"
-              class="w-full h-auto object-contain"
-            />
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="py-16 bg-white">
-      <div class="container mx-auto px-4">
-        <div class="flex items-center justify-between mb-8">
-          <h2 class="text-2xl font-bold text-gray-900">Lançamentos</h2>
-          <a
-            href="#"
-            class="ver-mais-link font-nunito-sans font-bold text-sm text-gray-500 transition-colors duration-300"
-            >Ver mais</a
-          >
-        </div>
-        <div class="relative">
-          <button
-            class="absolute left-0 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full flex items-center justify-center z-10 bg-white text-blue-600 border-2 border-blue-600 shadow-sm transition-all duration-200 hover:bg-blue-50"
-            onclick="scrollProducts('left')"
-          >
-            <svg
-              class="w-4 h-4"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2.5"
-                d="M15 19l-7-7 7-7"
-              />
-            </svg>
-          </button>
-          <button
-            class="absolute right-0 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full flex items-center justify-center z-10 bg-white text-blue-600 border-2 border-blue-600 shadow-sm transition-all duration-200 hover:bg-blue-50"
-            onclick="scrollProducts('right')"
-          >
-            <svg
-              class="w-4 h-4"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2.5"
-                d="M9 5l7 7-7 7"
-              />
-            </svg>
-          </button>
-          <div class="overflow-hidden">
-            <div
-              id="products-container-2"
-              class="flex space-x-4 transition-transform duration-300"
-            ></div>
-          </div>
-        </div>
-        <div class="flex justify-center mt-6 space-x-2">
-          <div class="w-2 h-2 bg-blue-600 rounded-full"></div>
-          <div class="w-2 h-2 bg-gray-300 rounded-full"></div>
-          <div class="w-2 h-2 bg-gray-300 rounded-full"></div>
-        </div>
-      </div>
-    </section>
-
-    <section class="relative w-full h-[660px]">
-      <img
-        src="assets/imgs/image.png"
-        alt="Loja AVANTI"
-        class="w-full h-full object-cover"
-      />
-      <div
-        class="absolute inset-x-0 top-1/2 -translate-y-1/2 bg-blue-600 py-4 text-center"
-      >
-        <p class="text-white font-nunito font-semibold text-lg">
-          Entre em contato conosco e verifique a disponibilidade para sua
-          região!
-        </p>
-      </div>
-    </section>
-
-    <section class="bg-white py-12">
-      <div class="container mx-auto px-4 max-w-[830px]">
-        <p class="text-center font-nunito text-[18px] text-gray-800 mb-6">
-          Cadastre-se na nossa
-          <span class="text-blue-600 font-semibold">newsletter</span>
-        </p>
-        <div
-          class="bg-gray-100 rounded-lg px-8 py-6 flex items-center gap-4 max-md:flex-col"
-        >
-          <input
-            type="text"
-            placeholder="Digite seu nome"
-            class="flex-1 px-4 py-2.5 border border-gray-300 rounded-md bg-white text-sm font-nunito focus:outline-none focus:ring-2 focus:ring-blue-primary max-md:w-full"
-          />
-          <input
-            type="email"
-            placeholder="Digite seu e-mail"
-            class="flex-1 px-4 py-2.5 border border-gray-300 rounded-md bg-white text-sm font-nunito focus:outline-none focus:ring-2 focus:ring-blue-primary max-md:w-full"
-          />
-          <label
-            class="flex items-center gap-2 text-[11px] text-gray-500 font-nunito whitespace-nowrap cursor-pointer"
-          >
-            <input type="checkbox" class="w-3.5 h-3.5 accent-blue-600" />
-            Estou de acordo com a Política de Privacidade
-          </label>
-          <button
-            class="bg-blue-600 hover:bg-blue-700 text-white font-nunito font-semibold text-sm px-6 py-2.5 rounded-md transition-colors max-md:w-full"
-          >
-            Cadastrar
-          </button>
-        </div>
-      </div>
-    </section>
-
-    <footer class="bg-gray-100 pt-12 pb-0 min-h-[386px]">
-      <div class="container mx-auto px-8 max-w-[1177px]">
-        <div class="flex justify-between gap-8 mb-10 max-md:flex-col">
-          <div class="flex flex-col gap-4">
-            <img src="assets/imgs/logo.svg" alt="AVANTI" class="w-auto" />
-            <div class="flex items-center gap-[40px] mt-2">
-              <a href="#"
-                ><img
-                  src="assets/imgs/footer-imgs/instagram.svg"
-                  alt="Instagram"
-                  class="w-5 h-5 object-contain"
-              /></a>
-              <a href="#"
-                ><img
-                  src="assets/imgs/footer-imgs/facebook.svg"
-                  alt="Facebook"
-                  class="w-5 h-5 object-contain"
-              /></a>
-              <a href="#"
-                ><img
-                  src="assets/imgs/footer-imgs/youtube.svg"
-                  alt="YouTube"
-                  class="w-5 h-5 object-contain"
-              /></a>
-              <a href="#"
-                ><img
-                  src="assets/imgs/footer-imgs/tiktok.svg"
-                  alt="TikTok"
-                  class="w-5 h-5 object-contain"
-              /></a>
-            </div>
-          </div>
-
-          <div>
-            <h4 class="font-nunito font-bold text-[14px] text-gray-800 mb-4">
-              Institucional
-            </h4>
-            <ul class="space-y-2">
-              <li>
-                <a
-                  href="#"
-                  class="font-nunito text-[13px] text-gray-500 hover:text-blue-600 transition-colors"
-                  >Sobre Nós</a
-                >
-              </li>
-              <li>
-                <a
-                  href="#"
-                  class="font-nunito text-[13px] text-gray-500 hover:text-blue-600 transition-colors"
-                  >Nossas Lojas</a
-                >
-              </li>
-              <li>
-                <a
-                  href="#"
-                  class="font-nunito text-[13px] text-gray-500 hover:text-blue-600 transition-colors"
-                  >Privacidade e Segurança</a
-                >
-              </li>
-              <li>
-                <a
-                  href="#"
-                  class="font-nunito text-[13px] text-gray-500 hover:text-blue-600 transition-colors"
-                  >Termos e Condições</a
-                >
-              </li>
-            </ul>
-          </div>
-
-          <div>
-            <h4 class="font-nunito font-bold text-[14px] text-gray-800 mb-4">
-              Central de ajuda
-            </h4>
-            <ul class="space-y-2">
-              <li>
-                <a
-                  href="#"
-                  class="font-nunito text-[13px] text-gray-500 hover:text-blue-600 transition-colors"
-                  >Fale Conosco</a
-                >
-              </li>
-              <li>
-                <a
-                  href="#"
-                  class="font-nunito text-[13px] text-gray-500 hover:text-blue-600 transition-colors"
-                  >Frete e Entrega</a
-                >
-              </li>
-              <li>
-                <a
-                  href="#"
-                  class="font-nunito text-[13px] text-gray-500 hover:text-blue-600 transition-colors"
-                  >Trocas e Devoluções</a
-                >
-              </li>
-              <li>
-                <a
-                  href="#"
-                  class="font-nunito text-[13px] text-gray-500 hover:text-blue-600 transition-colors"
-                  >Formas de Pagamento</a
-                >
-              </li>
-              <li>
-                <a
-                  href="#"
-                  class="font-nunito text-[13px] text-gray-500 hover:text-blue-600 transition-colors"
-                  >FAQ</a
-                >
-              </li>
-            </ul>
-          </div>
-
-          <div>
-            <h4 class="font-nunito font-bold text-[14px] text-gray-800 mb-4">
-              Atendimento
-            </h4>
-            <ul class="space-y-2">
-              <li class="font-nunito text-[13px] text-gray-500">
-                <span class="font-bold text-gray-700">Telefone:</span> (00)
-                1234-5678
-              </li>
-              <li class="font-nunito text-[13px] text-gray-500">
-                <span class="font-bold text-gray-700">E-mail:</span>
-                exemplo@exemplo.com.br
-              </li>
-              <li class="font-nunito text-[13px] text-gray-500">
-                <span class="font-bold text-gray-700"
-                  >Horário de atendimento:</span
-                ><br />
-                Segunda a Sábado: 07h00 às 23h00<br />
-                Domingos e Feriados: 07h00 às 21h00
-              </li>
-            </ul>
-          </div>
-        </div>
-
-        <div
-          class="border-t border-gray-300 pt-6 pb-[38px] flex justify-center items-center flex-wrap gap-[34px]"
-        >
-          <img
-            src="assets/imgs/pagamentos-img/amex.svg"
-            alt="Amex"
-            class="h-[30px] object-contain"
-          />
-          <img
-            src="assets/imgs/pagamentos-img/b.svg"
-            alt="Mastercard"
-            class="h-[30px] object-contain"
-          />
-          <img
-            src="assets/imgs/pagamentos-img/visa.svg"
-            alt="Visa"
-            class="h-[30px] object-contain"
-          />
-          <img
-            src="assets/imgs/pagamentos-img/hipercard.svg"
-            alt="Hipercard"
-            class="h-[30px] object-contain"
-          />
-          <img
-            src="assets/imgs/pagamentos-img/b-1.svg"
-            alt="Elo"
-            class="h-[30px] object-contain"
-          />
-          <img
-            src="assets/imgs/pagamentos-img/União 32.svg"
-            alt="Diners"
-            class="h-[30px] object-contain"
-          />
-          <img
-            src="assets/imgs/pagamentos-img/paypal-seeklogo.com.svg"
-            alt="PayPal"
-            class="h-[30px] object-contain"
-          />
-          <img
-            src="assets/imgs/pagamentos-img/icon-boleto___ffe2ba684569d29f8e546b10457c48f8.svg"
-            alt="Boleto"
-            class="h-[30px] object-contain"
-          />
-        </div>
-      </div>
-
-      <div class="bg-white h-[211px] mb-[24px] flex items-center">
-        <div class="container mx-auto px-8 max-w-[1177px]">
-          <p class="text-[12px] text-gray-700 font-nunito text-center mb-4">
-            Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam
-            nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat
-            volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation
-            ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo
-            consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate
-            velit esse molestie consequat, vel illum dolore eu feugiat nulla
-            facilisis at vero eros et accumsan et iusto odio dignissim qui
-            blandit praesent luptatum zzril delenit augue duis dolore te feugait
-            nulla facilisi.
+            Ganhe
+            <mark class="bg-violet-800 rounded px-2 text-white">R$10,00</mark>
+            de desconto no seu primeiro pedido. Utilize o cupom DESCONTO10
           </p>
-          <div class="flex items-center justify-center gap-[24px] mt-[40px]">
-            <img
-              src="assets/imgs/footer-imgs/lets-encrypt.svg"
-              alt="Let's Encrypt"
-              class="h-8 object-contain"
-            />
-            <img
-              src="assets/imgs/footer-imgs/vtex-pci-200.svg"
-              alt="VTEX PCI"
-              class="h-8 object-contain"
-            />
-            <div class="w-px h-6 bg-gray-300"></div>
-            <img
-              src="assets/imgs/logo.svg"
-              alt="AVANTI"
-              class="h-6 object-contain"
-            />
-            <img
-              src="assets/imgs/footer-imgs/vtex-logo.svg"
-              alt="VTEX"
-              class="h-6 object-contain"
-            />
+        </aside>
+
+        <div class="">
+          <div
+            class="w-full max-w-[1259px] mx-auto flex items-center justify-between py-4"
+          >
+            <a href="/">
+              <img class="w-36 h-7" src="assets/imgs/logo.svg" alt="AVANTI" />
+            </a>
+
+            <!-- Search -->
+            <form
+              role="search"
+              class="flex-1 mx-6 h-10 flex items-center rounded-[10px] outline outline-1 outline-offset-[-0.50px] outline-neutral-200 px-3 gap-2"
+            >
+              <label for="search-input" class="sr-only">Buscar produtos</label>
+              <input
+                id="search-input"
+                type="search"
+                placeholder="Digite aqui o que você procura"
+                class="flex-1 bg-transparent text-black text-sm font-semibold font-['Nunito_Sans'] placeholder:text-black placeholder:font-semibold focus:outline-none"
+              />
+              <button type="submit" aria-label="Buscar">
+                <img
+                  class="w-5 h-5"
+                  src="assets/imgs/search.svg"
+                  alt=""
+                  aria-hidden="true"
+                />
+              </button>
+            </form>
+
+            <div class="flex items-center gap-6">
+              <a href="/conta" class="flex items-center gap-2">
+                <img
+                  class="w-5 h-6"
+                  src="assets/imgs/user.svg"
+                  alt=""
+                  aria-hidden="true"
+                />
+                <span
+                  class="text-black text-sm font-semibold font-['Nunito_Sans'] leading-4"
+                  >Olá,<br />Nome cliente!</span
+                >
+              </a>
+
+              <div class="relative">
+                <a
+                  href="/carrinho"
+                  aria-label="Carrinho de compras com 2 itens"
+                >
+                  <img
+                    class="w-6 h-6"
+                    src="assets/imgs/cart.svg"
+                    alt=""
+                    aria-hidden="true"
+                  />
+                </a>
+                <span
+                  class="absolute -top-2 -right-2 w-5 h-5 bg-blue-600 rounded-full border flex items-center justify-center"
+                  aria-hidden="true"
+                >
+                  <span
+                    class="text-white text-xs font-bold font-['Nunito'] leading-4"
+                    >2</span
+                  >
+                </span>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-    </footer>
 
+        <nav aria-label="Categorias" class="w-full">
+          <div class="w-full max-w-[1259px] mx-auto">
+            <ul class="flex flex-wrap items-center gap-11 py-2">
+              <li class="flex items-center gap-2">
+                <img
+                  src="assets/imgs/icon-menu.svg"
+                  alt=""
+                  aria-hidden="true"
+                />
+                <a
+                  href="/categorias"
+                  class="text-black text-sm font-bold font-['Nunito_Sans'] leading-5"
+                  >Todas as Categorias</a
+                >
+              </li>
+
+              <li>
+                <a
+                  href="/departamento"
+                  class="text-black text-sm font-normal font-['Nunito_Sans'] leading-5"
+                  >Departamento</a
+                >
+              </li>
+              <li>
+                <a
+                  href="/departamento"
+                  class="text-black text-sm font-normal font-['Nunito_Sans'] leading-5"
+                  >Departamento</a
+                >
+              </li>
+              <li>
+                <a
+                  href="/departamento"
+                  class="text-black text-sm font-normal font-['Nunito_Sans'] leading-5"
+                  >Departamento</a
+                >
+              </li>
+              <li>
+                <a
+                  href="/departamento"
+                  class="text-black text-sm font-normal font-['Nunito_Sans'] leading-5"
+                  >Departamento</a
+                >
+              </li>
+              <li>
+                <a
+                  href="/departamento"
+                  class="text-black text-sm font-normal font-['Nunito_Sans'] leading-5"
+                  >Departamento</a
+                >
+              </li>
+              <li>
+                <a
+                  href="/departamento"
+                  class="text-black text-sm font-normal font-['Nunito_Sans'] leading-5"
+                  >Departamento</a
+                >
+              </li>
+              <li>
+                <a
+                  href="/departamento"
+                  class="text-black text-sm font-normal font-['Nunito_Sans'] leading-5"
+                  >Departamento</a
+                >
+              </li>
+              <li>
+                <a
+                  href="/departamento"
+                  class="text-black text-sm font-normal font-['Nunito_Sans'] leading-5"
+                  >Departamento</a
+                >
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </header>
+
+      <!-- banner-->
+      <section
+        aria-label="Super Sale"
+        class="w-full h-[510px] bg-gray-200 flex flex-col md:flex-row items-center justify-center"
+      >
+        <img
+          class="w-full md:w-[685px] h-[300px] md:h-[510px] object-cover mix-blend-darken"
+          src="assets/imgs/banner-chair.png"
+          alt="Cadeira em destaque"
+        />
+        <div
+          class="w-full md:w-[576px] h-56 flex flex-col justify-center items-center gap-3 px-4"
+        >
+          <p class="flex flex-row items-baseline gap-2">
+            <span
+              class="text-black text-5xl md:text-8xl font-bold font-['Nunito'] uppercase"
+              >super</span
+            >
+            <span
+              class="text-black text-5xl md:text-8xl font-light font-['Nunito'] uppercase"
+              >sale</span
+            >
+          </p>
+          <p
+            class="text-blue-600 text-lg md:text-2xl font-bold font-['Nunito'] uppercase tracking-[0.2em]"
+          >
+            Itens selecionados com até
+          </p>
+          <p
+            class="text-blue-600 text-4xl md:text-6xl font-bold font-['Nunito'] uppercase"
+          >
+            50%off
+          </p>
+        </div>
+      </section>
+
+      <section
+        aria-label="Lançamentos"
+        class="w-full max-w-[1259px] mx-auto py-4"
+      >
+        <div class="flex items-center justify-between mb-4">
+          <h2 class="text-black text-xl font-bold font-['Nunito_Sans']">
+            Lançamentos
+          </h2>
+          <a
+            href="/lancamentos"
+            class="text-zinc-800 text-sm font-bold font-['Nunito_Sans'] leading-5"
+            >Ver mais</a
+          >
+        </div>
+
+        <!-- carousel -->
+        <div class="relative">
+          <button
+            aria-label="Anterior"
+            class="absolute -left-3.5 top-1/2 -translate-y-1/2 z-10 w-7 h-7 bg-white rounded-full shadow-[0px_3px_4px_0px_rgba(0,0,0,0.25)] border border-blue-600 flex items-center justify-center -rotate-180"
+          >
+            <span
+              class="w-3 h-3 bg-blue-600 shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)] outline outline-1 outline-offset-[-0.50px]"
+            ></span>
+          </button>
+
+          <ul
+            id="product-list"
+            class="flex justify-start items-start gap-4 overflow-x-auto pb-6 scrollbar-none"
+          ></ul>
+
+          <button
+            aria-label="Próximo"
+            class="absolute -right-3.5 top-1/2 -translate-y-1/2 z-10 w-7 h-7 bg-white rounded-full shadow-[0px_3px_4px_0px_rgba(0,0,0,0.25)] border border-blue-600 flex items-center justify-center"
+          >
+            <span
+              class="w-3 h-3 bg-blue-600 outline outline-1 outline-offset-[-0.50px]"
+            ></span>
+          </button>
+
+          <div
+            role="tablist"
+            aria-label="Slides"
+            class="flex justify-center items-center gap-2 mt-2"
+          >
+            <span
+              role="tab"
+              aria-selected="true"
+              class="w-1.5 h-1.5 bg-zinc-800 rounded-full"
+            ></span>
+            <span
+              role="tab"
+              aria-selected="false"
+              class="w-1.5 h-1.5 bg-zinc-500 rounded-full"
+            ></span>
+            <span
+              role="tab"
+              aria-selected="false"
+              class="w-1.5 h-1.5 bg-zinc-500 rounded-full"
+            ></span>
+          </div>
+        </div>
+      </section>
+    </div>
     <script src="script.js"></script>
   </body>
 </html>
