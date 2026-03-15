@@ -1,3 +1,9 @@
+import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,wght@0,200..1000;1,200..1000&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
+
+body {
+  font-family: 'Nunito Sans', sans-serif;
+}
+
 .swiper-lancamentos .swiper-button-prev,
 .swiper-lancamentos .swiper-button-next {
   --swiper-navigation-size: 0px;
@@ -33,7 +39,7 @@
 }
 
 .swiper-lancamentos .swiper {
-  overflow: hidden;
+    overflow: hidden;
   padding-bottom: 32px;
 }
 

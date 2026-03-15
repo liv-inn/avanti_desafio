@@ -81,23 +81,23 @@ function renderCard(produto) {
     <article class="w-60 h-96 flex flex-col bg-white rounded-[10px] border border-neutral-200 overflow-hidden">
       <div class="relative">
         <img class="w-full h-56 object-cover" src="${produto.img}" alt="${produto.nome}" />
-        <div class="absolute top-2 left-2 px-1 py-0.5 bg-sky-950 rounded border text-white text-[10px] font-bold font-['Nunito_Sans'] uppercase">
+        <div class="absolute top-2 left-2 px-1 py-0.5 bg-sky-950 rounded border text-white text-[10px] font-bold  uppercase">
           ${produto.badge}
         </div>
       </div>
       <div class="p-2 flex flex-col flex-grow">
-        <h3 class="h-10 text-zinc-800 text-sm font-normal font-['Nunito_Sans'] capitalize">${produto.nome}</h3>
-        <p class="text-zinc-800 text-xs font-normal font-['Nunito_Sans'] line-through capitalize">${produto.precoOriginal}</p>
+        <h3 class="h-10 text-zinc-800 text-sm font-normal  capitalize">${produto.nome}</h3>
+        <p class="text-zinc-800 text-xs font-normal  line-through capitalize">${produto.precoOriginal}</p>
         <div class="flex items-baseline gap-2">
-            <p class="text-black text-base font-bold font-['Nunito_Sans'] capitalize">${produto.preco}</p>
-            <mark class="px-2 py-1 bg-emerald-300 rounded text-white text-xs font-bold font-['Nunito_Sans'] underline uppercase leading-3">
+            <p class="text-black text-base font-bold  capitalize">${produto.preco}</p>
+            <mark class="px-2 py-1 bg-emerald-300 rounded text-white text-xs font-bold  underline uppercase leading-3">
                 ${produto.desconto}
             </mark>
         </div>
-        <p class="text-zinc-800 text-xs font-normal font-['Nunito_Sans']">
+        <p class="text-zinc-800 text-xs font-normal ">
             Ou em até <strong class="font-bold">${produto.parcelas}</strong>
         </p>
-        <button class="w-full mt-auto px-6 py-2.5 bg-blue-600 rounded-lg text-white text-sm font-bold font-['Nunito_Sans'] leading-5">
+        <button class="w-full mt-auto px-6 py-2.5 bg-blue-600 rounded-lg text-white text-sm font-bold  leading-5">
             Comprar
         </button>
       </div>
