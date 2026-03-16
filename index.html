@@ -153,7 +153,9 @@
 
           <!-- Search bar mobile -->
           <div class="mobile-search-bar">
-            <label for="search-input-mobile" class="sr-only">Buscar produtos</label>
+            <label for="search-input-mobile" class="sr-only"
+              >Buscar produtos</label
+            >
             <input
               id="search-input-mobile"
               type="search"
@@ -170,9 +172,19 @@
           </div>
         </div>
 
-        <nav aria-label="Categorias" id="nav-categorias" class="w-full relative mb-4">
+        <nav
+          aria-label="Categorias"
+          id="nav-categorias"
+          class="w-full relative mb-4"
+        >
           <!-- Botão fechar (só no mobile) -->
-          <button class="mobile-nav-close hidden" id="mobile-nav-close" aria-label="Fechar menu">✕</button>
+          <button
+            class="mobile-nav-close hidden"
+            id="mobile-nav-close"
+            aria-label="Fechar menu"
+          >
+            ✕
+          </button>
 
           <div class="w-full max-w-[1259px] mx-auto">
             <ul id="nav-list" class="flex flex-wrap items-center gap-11 py-2">
@@ -234,7 +246,7 @@
             >
           </p>
           <p
-            class="text-blue-600 text-lg md:text-2xl font-bold font-['Nunito'] uppercase tracking-[0.2em]"
+            class="text-blue-600 text-lg md:text-2xl font-bold font-['Nunito'] uppercase tracking-[7.5px]"
           >
             Itens selecionados com até
           </p>
@@ -260,14 +272,18 @@
           >
         </div>
         <div class="swiper-lancamentos relative px-4">
-          <button class="swiper-button-prev bg-white w-10 rounded-full h-10 border border-blue-600">
+          <button
+            class="swiper-button-prev bg-white w-10 rounded-full h-10 border border-blue-600"
+          >
             <img
               src="assets/imgs/icons/left-arrow.svg"
               alt="Voltar"
               class="w-30 h-30"
             />
           </button>
-          <button class="swiper-button-next bg-white w-10 rounded-full h-10 border border-blue-600">
+          <button
+            class="swiper-button-next bg-white w-10 rounded-full h-10 border border-blue-600"
+          >
             <img
               src="assets/imgs/icons/right-arrow.svg"
               alt="Avançar"
@@ -379,7 +395,7 @@
 
       <!---produto 2--->
       <section
-        aria-label="Lançamentos"
+        aria-label="Mais lançamentos"
         class="w-full max-w-[1259px] mx-auto mt-[103px]"
       >
         <div class="flex items-center justify-between mb-4">
@@ -391,12 +407,24 @@
           >
         </div>
         <div class="swiper-lancamentos relative px-4">
-          <div class="swiper-button-prev">
-            <img src="assets/imgs/icons/left-arrow.svg" alt="Voltar" />
-          </div>
-          <div class="swiper-button-next">
-            <img src="assets/imgs/icons/right-arrow.svg" alt="Avançar" />
-          </div>
+          <button
+            class="swiper-button-prev bg-white w-10 rounded-full h-10 border border-blue-600"
+          >
+            <img
+              src="assets/imgs/icons/left-arrow.svg"
+              alt="Voltar"
+              class="w-30 h-30"
+            />
+          </button>
+          <button
+            class="swiper-button-next bg-white w-10 rounded-full h-10 border border-blue-600"
+          >
+            <img
+              src="assets/imgs/icons/right-arrow.svg"
+              alt="Avançar"
+              class="w-30 h-30"
+            />
+          </button>
           <div class="swiper">
             <ul class="swiper-wrapper product-list"></ul>
             <div class="swiper-pagination"></div>
@@ -449,7 +477,9 @@
                 class="w-72 h-12 bg-white rounded-lg px-4 text-zinc-800 text-sm font-normal outline-none"
                 aria-label="Seu nome"
               />
-              <span class="newsletter-field-label hidden-desktop">Digite seu nome</span>
+              <span class="newsletter-field-label hidden-desktop"
+                >Digite seu nome</span
+              >
             </div>
             <div class="newsletter-field-wrap w-72">
               <input
@@ -459,7 +489,9 @@
                 class="w-72 h-12 bg-white rounded-lg px-4 text-zinc-800 text-sm font-normal outline-none"
                 aria-label="Seu e-mail"
               />
-              <span class="newsletter-field-label hidden-desktop">Digite seu e-mail</span>
+              <span class="newsletter-field-label hidden-desktop"
+                >Digite seu e-mail</span
+              >
             </div>
             <label class="flex items-center gap-2 cursor-pointer">
               <input
@@ -715,63 +747,64 @@
       </footer>
     </div>
 
-
     <script>
       (function () {
         const isMobile = () => window.innerWidth < 768;
 
         // menu mobile
-        const mobileBtn = document.getElementById('mobile-menu-btn');
-        const mobileClose = document.getElementById('mobile-nav-close');
-        const nav = document.getElementById('nav-categorias');
-        const hamburger = document.querySelector('.hamburger-btn');
-        const mobileCart = document.querySelector('.mobile-cart');
+        const mobileBtn = document.getElementById("mobile-menu-btn");
+        const mobileClose = document.getElementById("mobile-nav-close");
+        const nav = document.getElementById("nav-categorias");
+        const hamburger = document.querySelector(".hamburger-btn");
+        const mobileCart = document.querySelector(".mobile-cart");
 
         function applyMobileLayout() {
           if (isMobile()) {
-            hamburger.classList.remove('hidden');
-            mobileCart.classList.remove('hidden');
-            mobileClose.classList.remove('hidden');
+            hamburger.classList.remove("hidden");
+            mobileCart.classList.remove("hidden");
+            mobileClose.classList.remove("hidden");
           } else {
-            hamburger.classList.add('hidden');
-            mobileCart.classList.add('hidden');
-            mobileClose.classList.add('hidden');
-            nav.classList.remove('mobile-open');
+            hamburger.classList.add("hidden");
+            mobileCart.classList.add("hidden");
+            mobileClose.classList.add("hidden");
+            nav.classList.remove("mobile-open");
           }
         }
 
         applyMobileLayout();
-        window.addEventListener('resize', applyMobileLayout);
+        window.addEventListener("resize", applyMobileLayout);
 
-        mobileBtn.addEventListener('click', () => {
-          nav.classList.toggle('mobile-open');
-          const isOpen = nav.classList.contains('mobile-open');
-          mobileBtn.setAttribute('aria-expanded', isOpen);
+        mobileBtn.addEventListener("click", () => {
+          nav.classList.toggle("mobile-open");
+          const isOpen = nav.classList.contains("mobile-open");
+          mobileBtn.setAttribute("aria-expanded", isOpen);
         });
 
-        mobileClose.addEventListener('click', () => {
-          nav.classList.remove('mobile-open');
-          mobileBtn.setAttribute('aria-expanded', 'false');
+        mobileClose.addEventListener("click", () => {
+          nav.classList.remove("mobile-open");
+          mobileBtn.setAttribute("aria-expanded", "false");
         });
 
         // accordion (mobile) ───
         const footerSections = [
           document.querySelector('nav[aria-label="Institucional"]'),
           document.querySelector('nav[aria-label="Central de ajuda"]'),
-          document.querySelector('footer address'),
+          document.querySelector("footer address"),
         ];
 
         footerSections.forEach((section) => {
           if (!section) return;
-          const heading = section.querySelector('h3');
+          const heading = section.querySelector("h3");
           if (!heading) return;
 
-          heading.addEventListener('click', () => {
+          heading.addEventListener("click", () => {
             if (!isMobile()) return;
-            const isOpen = section.classList.contains('accordion-open');
+            const isOpen = section.classList.contains("accordion-open");
             // fecha todos
-            footerSections.forEach((s) => s && s.classList.remove('accordion-open'));
-            if (!isOpen) section.classList.add('accordion-open');
+            footerSections.forEach(
+              (s) => s && s.classList.remove("accordion-open"),
+            );
+            if (!isOpen) section.classList.add("accordion-open");
           });
         });
       })();
