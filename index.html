@@ -59,15 +59,28 @@
 
         <div class="">
           <div
-            class="w-full max-w-[1259px] mx-auto flex items-center justify-between py-4"
+            class="w-full max-w-[1259px] mx-auto flex items-center justify-between py-4 header-main-row"
           >
+            <!-- Hamburger: só aparece no mobile -->
+            <button
+              class="hamburger-btn hidden"
+              id="mobile-menu-btn"
+              aria-label="Abrir menu"
+              aria-expanded="false"
+              aria-controls="nav-categorias"
+            >
+              <span></span>
+              <span></span>
+              <span></span>
+            </button>
+
             <a href="/">
               <img class="w-36 h-7" src="assets/imgs/logo.svg" alt="AVANTI" />
             </a>
 
             <form
               role="search"
-              class="flex-1 max-w-[594px] mx-6 h-10 flex items-center rounded-[10px] outline outline-1 outline-offset-[-0.50px] outline-neutral-200 px-3 gap-2"
+              class="desktop-search flex-1 max-w-[594px] mx-6 h-10 flex items-center rounded-[10px] outline outline-1 outline-offset-[-0.50px] outline-neutral-200 px-3 gap-2"
             >
               <label for="search-input" class="sr-only">Buscar produtos</label>
               <input
@@ -86,7 +99,7 @@
               </button>
             </form>
 
-            <div class="flex items-center gap-6">
+            <div class="desktop-user flex items-center gap-6">
               <a href="/conta" class="flex items-center gap-2">
                 <img
                   class="w-5 h-6"
@@ -118,10 +131,49 @@
                 </span>
               </div>
             </div>
+
+            <!-- Carrinho mobile (sempre visível) -->
+            <div class="relative mobile-cart hidden">
+              <a href="/carrinho" aria-label="Carrinho de compras com 2 itens">
+                <img
+                  class="w-6 h-6"
+                  src="assets/imgs/icons/cart.svg"
+                  alt=""
+                  aria-hidden="true"
+                />
+              </a>
+              <span
+                class="absolute -top-2 -right-2 w-5 h-5 bg-blue-600 rounded-full border flex items-center justify-center"
+                aria-hidden="true"
+              >
+                <span class="text-white text-xs font-bold leading-4">2</span>
+              </span>
+            </div>
+          </div>
+
+          <!-- Search bar mobile -->
+          <div class="mobile-search-bar">
+            <label for="search-input-mobile" class="sr-only">Buscar produtos</label>
+            <input
+              id="search-input-mobile"
+              type="search"
+              placeholder="Digite aqui o que você procura"
+            />
+            <button type="button" aria-label="Buscar">
+              <img
+                class="w-5 h-5"
+                src="assets/imgs/icons/search.svg"
+                alt=""
+                aria-hidden="true"
+              />
+            </button>
           </div>
         </div>
 
-        <nav aria-label="Categorias" class="w-full relative mb-4">
+        <nav aria-label="Categorias" id="nav-categorias" class="w-full relative mb-4">
+          <!-- Botão fechar (só no mobile) -->
+          <button class="mobile-nav-close hidden" id="mobile-nav-close" aria-label="Fechar menu">✕</button>
+
           <div class="w-full max-w-[1259px] mx-auto">
             <ul id="nav-list" class="flex flex-wrap items-center gap-11 py-2">
               <li class="flex items-center gap-2">
@@ -318,7 +370,6 @@
       </section>
 
       <!---sessao2--->
-
       <section
         aria-label="Destaque de produto 2"
         class="w-full max-w-[1259px] mx-auto mt-12"
@@ -389,20 +440,27 @@
           class="w-full h-44 justify-center bg-neutral-200 rounded-lg flex items-center px-6 py-4 gap-4"
         >
           <form class="flex flex-wrap items-center gap-6 flex-1 justify-center">
-            <label for="newsletter-name" class="sr-only">Seu nome</label>
-            <input
-              id="newsletter-name"
-              type="text"
-              placeholder="Digite seu nome"
-              class="w-72 h-12 bg-white rounded-lg px-4 text-zinc-800 text-sm font-normal outline-none"
-            />
-            <label for="newsletter-email" class="sr-only">Seu e-mail</label>
-            <input
-              id="newsletter-email"
-              type="email"
-              placeholder="Digite seu e-mail"
-              class="w-72 h-12 bg-white rounded-lg px-4 text-zinc-800 text-sm font-normal outline-none"
-            />
+            <!-- Desktop: inputs side by side. Mobile: cada campo tem label visível abaixo -->
+            <div class="newsletter-field-wrap w-72">
+              <input
+                id="newsletter-name"
+                type="text"
+                placeholder="Digite seu nome"
+                class="w-72 h-12 bg-white rounded-lg px-4 text-zinc-800 text-sm font-normal outline-none"
+                aria-label="Seu nome"
+              />
+              <span class="newsletter-field-label hidden-desktop">Digite seu nome</span>
+            </div>
+            <div class="newsletter-field-wrap w-72">
+              <input
+                id="newsletter-email"
+                type="email"
+                placeholder="Digite seu e-mail"
+                class="w-72 h-12 bg-white rounded-lg px-4 text-zinc-800 text-sm font-normal outline-none"
+                aria-label="Seu e-mail"
+              />
+              <span class="newsletter-field-label hidden-desktop">Digite seu e-mail</span>
+            </div>
             <label class="flex items-center gap-2 cursor-pointer">
               <input
                 type="checkbox"
@@ -585,7 +643,6 @@
               alt="Visa"
               class="h-6 object-contain"
             />
-
             <img
               src="assets/imgs/pagamentos-img/hipercard.svg"
               alt="Hipercard"
@@ -606,13 +663,11 @@
               alt="Mastercard"
               class="h-6 object-contain"
             />
-
             <img
               src="assets/imgs/pagamentos-img/União 39.svg"
               alt="Bandeira"
               class="h-6 object-contain"
             />
-
             <img
               src="assets/imgs/pagamentos-img/icon-boleto___ffe2ba684569d29f8e546b10457c48f8.svg"
               alt="Boleto"
@@ -659,5 +714,67 @@
         </div>
       </footer>
     </div>
+
+
+    <script>
+      (function () {
+        const isMobile = () => window.innerWidth < 768;
+
+        // menu mobile
+        const mobileBtn = document.getElementById('mobile-menu-btn');
+        const mobileClose = document.getElementById('mobile-nav-close');
+        const nav = document.getElementById('nav-categorias');
+        const hamburger = document.querySelector('.hamburger-btn');
+        const mobileCart = document.querySelector('.mobile-cart');
+
+        function applyMobileLayout() {
+          if (isMobile()) {
+            hamburger.classList.remove('hidden');
+            mobileCart.classList.remove('hidden');
+            mobileClose.classList.remove('hidden');
+          } else {
+            hamburger.classList.add('hidden');
+            mobileCart.classList.add('hidden');
+            mobileClose.classList.add('hidden');
+            nav.classList.remove('mobile-open');
+          }
+        }
+
+        applyMobileLayout();
+        window.addEventListener('resize', applyMobileLayout);
+
+        mobileBtn.addEventListener('click', () => {
+          nav.classList.toggle('mobile-open');
+          const isOpen = nav.classList.contains('mobile-open');
+          mobileBtn.setAttribute('aria-expanded', isOpen);
+        });
+
+        mobileClose.addEventListener('click', () => {
+          nav.classList.remove('mobile-open');
+          mobileBtn.setAttribute('aria-expanded', 'false');
+        });
+
+        // accordion (mobile) ───
+        const footerSections = [
+          document.querySelector('nav[aria-label="Institucional"]'),
+          document.querySelector('nav[aria-label="Central de ajuda"]'),
+          document.querySelector('footer address'),
+        ];
+
+        footerSections.forEach((section) => {
+          if (!section) return;
+          const heading = section.querySelector('h3');
+          if (!heading) return;
+
+          heading.addEventListener('click', () => {
+            if (!isMobile()) return;
+            const isOpen = section.classList.contains('accordion-open');
+            // fecha todos
+            footerSections.forEach((s) => s && s.classList.remove('accordion-open'));
+            if (!isOpen) section.classList.add('accordion-open');
+          });
+        });
+      })();
+    </script>
   </body>
 </html>

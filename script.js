@@ -42,6 +42,7 @@ const destaques = [
     ],
   },
 ];
+
 const produtos = Array(8).fill({
   nome: "Lorem ipsum dolor sit amet consectetuer adipiscing elit",
   precoOriginal: "R$ 100,00",
@@ -163,22 +164,22 @@ destaques.forEach((d, i) => {
 
 function renderCard(produto) {
   const li = document.createElement("li");
-  li.className = "swiper-slide !w-60";
+  li.className = "swiper-slide";
   li.innerHTML = `
-    <article class="w-60 h-96 flex flex-col bg-white rounded-[10px] border border-neutral-200 overflow-hidden">
+    <article class="w-full flex flex-col bg-white rounded-[10px] border border-neutral-200 overflow-hidden">
       <div class="relative">
         <img class="w-full h-56 object-cover" src="${produto.img}" alt="${produto.nome}" />
         <div class="absolute top-2 left-2 px-1 py-0.5 bg-sky-950 rounded border text-white text-[10px] font-bold uppercase">${produto.badge}</div>
       </div>
-      <div class="p-2 flex flex-col flex-grow">
-        <h3 class="h-10 text-zinc-800 text-sm font-normal capitalize">${produto.nome}</h3>
+      <div class="p-2 flex flex-col flex-grow justify-between gap-1">
+        <h3 class="text-zinc-800 text-sm font-normal capitalize">${produto.nome}</h3>
         <p class="text-zinc-800 text-xs font-normal line-through capitalize">${produto.precoOriginal}</p>
         <div class="flex items-baseline gap-2">
           <p class="text-black text-base font-bold capitalize">${produto.preco}</p>
           <mark class="px-2 py-1 bg-emerald-300 rounded text-white text-xs font-bold underline uppercase leading-3">${produto.desconto}</mark>
         </div>
         <p class="text-zinc-800 text-xs font-normal">Ou em até <strong class="font-bold">${produto.parcelas}</strong></p>
-        <button class="w-full mt-auto px-6 py-2.5 bg-blue-600 rounded-lg text-white text-sm font-bold leading-5">Comprar</button>
+        <button class="w-full mt-auto px-6 py-2.5 bg-blue-600 rounded-lg text-white text-sm font-bold leading-5 hidden-mobile">Comprar</button>
       </div>
     </article>
   `;
@@ -189,7 +190,8 @@ function initCarrossel(container) {
   const lista = container.querySelector(".product-list");
   produtos.forEach((p) => lista.appendChild(renderCard(p)));
   new Swiper(container.querySelector(".swiper"), {
-    slidesPerView: 1,
+    // No mobile: 2 slides visíveis (conforme Figma)
+    slidesPerView: 2,
     spaceBetween: 16,
     pagination: {
       el: container.querySelector(".swiper-pagination"),
@@ -200,6 +202,7 @@ function initCarrossel(container) {
       prevEl: container.querySelector(".swiper-button-prev"),
     },
     breakpoints: {
+      // mobile já começa com 2
       640: { slidesPerView: 2 },
       768: { slidesPerView: 3 },
       1024: { slidesPerView: 4 },
@@ -210,7 +213,7 @@ function initCarrossel(container) {
 
 document.querySelectorAll(".swiper-lancamentos").forEach(initCarrossel);
 
-// ───  DROPDOWNS 
+// ─── DROPDOWNS TOGGLE 
 
 const menuIcon = document.getElementById("menu-icon");
 
@@ -225,12 +228,13 @@ function fecharTodos() {
       dropdown: document.getElementById("dropdown-departamento"),
     },
   ].forEach(({ btn, dropdown }) => {
+    if (!btn || !dropdown) return;
     dropdown.classList.add("hidden");
     btn.setAttribute("aria-expanded", "false");
     btn.classList.remove("text-blue-600");
     btn.classList.add("text-black");
   });
-  menuIcon.src = "assets/imgs/icons/icon-menu.svg";
+  if (menuIcon) menuIcon.src = "assets/imgs/icons/icon-menu.svg";
 }
 
 function toggleDropdown(btn, dropdown, comIcone = false) {
@@ -241,7 +245,7 @@ function toggleDropdown(btn, dropdown, comIcone = false) {
     btn.setAttribute("aria-expanded", "true");
     btn.classList.add("text-blue-600");
     btn.classList.remove("text-black");
-    if (comIcone) menuIcon.src = "assets/imgs/icons/icon-menu-blue.svg";
+    if (comIcone && menuIcon) menuIcon.src = "assets/imgs/icons/icon-menu-blue.svg";
   }
 }
 
@@ -251,17 +255,18 @@ document
     toggleDropdown(this, document.getElementById("dropdown-categorias"), true);
   });
 
-document
-  .getElementById("departamento-btn")
-  .addEventListener("click", function () {
-    toggleDropdown(this, document.getElementById("dropdown-departamento"));
-  });
-
+// departamento-btn é criado dinamicamente, usa delegação
 document.addEventListener("click", (e) => {
+  const depBtn = document.getElementById("departamento-btn");
+  if (depBtn && e.target === depBtn) {
+    toggleDropdown(depBtn, document.getElementById("dropdown-departamento"));
+    return;
+  }
   if (
     !document.querySelector('nav[aria-label="Categorias"]').contains(e.target)
-  )
+  ) {
     fecharTodos();
+  }
 });
 
 // ─── SEARCH 
@@ -269,19 +274,21 @@ document.addEventListener("click", (e) => {
 const searchForm = document.querySelector('form[role="search"]');
 const searchInput = document.getElementById("search-input");
 
-searchForm.addEventListener("submit", (e) => {
-  e.preventDefault();
-  const query = searchInput.value.trim();
-  if (!query) return;
+if (searchForm && searchInput) {
+  searchForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const query = searchInput.value.trim();
+    if (!query) return;
 
-  const existing = document.getElementById("search-result");
-  if (existing) existing.remove();
+    const existing = document.getElementById("search-result");
+    if (existing) existing.remove();
 
-  const result = document.createElement("p");
-  result.id = "search-result";
-  result.className =
-    "text-sm text-zinc-800 px-3 w-full max-w-[1259px] mx-auto py-2";
-  result.textContent = `Você buscou por: '${query}'`;
+    const result = document.createElement("p");
+    result.id = "search-result";
+    result.className =
+      "text-sm text-zinc-800 px-3 w-full max-w-[1259px] mx-auto py-2";
+    result.textContent = `Você buscou por: '${query}'`;
 
-  searchForm.closest("div").insertAdjacentElement("afterend", result);
-});
+    searchForm.closest("div").insertAdjacentElement("afterend", result);
+  });
+}
